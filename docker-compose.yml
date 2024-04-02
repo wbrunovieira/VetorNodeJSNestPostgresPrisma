@@ -1,19 +1,22 @@
 version: '3.8'
 services:
   app:
+    env_file:
+      - .env
     build: .
     ports:
       - '3333:3333'
     volumes:
       - .:/app
-      - /app/node_modules
+      - ./prisma:/app/prisma
+
     depends_on:
       - db
     environment:
       DATABASE_URL: postgres://postgres:docker@db:5432/db_vetor
 
     command: >
-      /bin/sh -c "./wait-for db:5432 -- npx prisma migrate deploy && npm run start:dev"
+      /bin/sh -c "./wait-for db:5432 -- npx prisma migrate deploy && npx prisma generate && npm run start:dev"
 
   db:
     image: postgres:13-alpine

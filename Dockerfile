@@ -7,6 +7,7 @@ WORKDIR /app
 
 COPY package*.json ./
 COPY tsconfig*.json ./
+COPY nest-cli.json ./
 
 COPY wait-for /wait-for
 RUN chmod +x /wait-for

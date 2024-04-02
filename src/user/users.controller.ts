@@ -19,4 +19,9 @@ export class UsersController {
   async getUsers() {
     return this.usersService.getUsers();
   }
+
+  @Get('valid-licenses')
+  async getlallUsers() {
+    return this.usersService.getAllUsersValidLicenses();
+  }
 }

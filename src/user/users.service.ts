@@ -15,6 +15,20 @@ export class UsersService {
         data: {
           ...data,
           password: hashedPassword,
+          // Adiciona a licença aqui, no relacionamento
+          licenses: {
+            create: [
+              {
+                // Defina os campos da licença aqui
+                amount: 1000, // Exemplo, defina conforme sua lógica de negócios
+                method: 'Visa', // Exemplo
+                valid: true, // Define a licença como válida
+              },
+            ],
+          },
+        },
+        include: {
+          licenses: true, // Opcional: inclua isso se quiser retornar os detalhes da licença juntamente com o usuário
         },
       });
       return user;
@@ -30,5 +44,17 @@ export class UsersService {
 
   async getUsers() {
     return this.prisma.user.findMany();
+  }
+
+  async getAllUsersValidLicenses() {
+    return this.prisma.user.findMany({
+      where: {
+        licenses: {
+          some: {
+            valid: true,
+          },
+        },
+      },
+    });
   }
 }

@@ -7,12 +7,31 @@ Content-Type: application/json
 
 {
   "name": "Walter",
-  "email": "walter@wbdigitalsolutions.com",
+  "email": "walter5@wbdigitalsolutions.com",
   "password": "123456a@d"
 }
 
 ###
 
 
-# @name get all users
+# @name get-all-users
 GET {{BASE_URL}}/users
+
+
+###
+
+# @name get-all-users-with-valid-licenses
+GET {{BASE_URL}}/users/valid-licenses
+
+
+
+###
+
+# @name auth
+POST {{BASE_URL}}/auth
+Content-Type: application/json
+
+{
+  "email": "walter5@wbdigitalsolutions.com",
+  "password": "123456a@d"
+}  
