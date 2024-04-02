@@ -6,8 +6,13 @@ POST {{BASE_URL}}/users
 Content-Type: application/json
 
 {
-  "name": "Adriano",
-  "email": "adrianos@wbdigitalsolutions.com",
-  "password": "123456ad"
+  "name": "Walter",
+  "email": "walter@wbdigitalsolutions.com",
+  "password": "123456a@d"
 }
 
+###
+
+
+# @name get all users
+GET {{BASE_URL}}/users

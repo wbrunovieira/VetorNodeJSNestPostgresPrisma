@@ -27,4 +27,8 @@ export class UsersService {
       throw error;
     }
   }
+
+  async getUsers() {
+    return this.prisma.user.findMany();
+  }
 }
