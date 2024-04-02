@@ -11,6 +11,12 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://postgres:docker@db:5432/db_vetor
+
+    command: >
+
+      npx prisma migrate deploy;
+      npm run start:dev;
+
   db:
     image: postgres:13-alpine
     volumes:
