@@ -15,20 +15,19 @@ export class UsersService {
         data: {
           ...data,
           password: hashedPassword,
-          // Adiciona a licença aqui, no relacionamento
+
           licenses: {
             create: [
               {
-                // Defina os campos da licença aqui
-                amount: 1000, // Exemplo, defina conforme sua lógica de negócios
-                method: 'Visa', // Exemplo
-                valid: true, // Define a licença como válida
+                amount: 1000,
+                method: 'Visa',
+                valid: true,
               },
             ],
           },
         },
         include: {
-          licenses: true, // Opcional: inclua isso se quiser retornar os detalhes da licença juntamente com o usuário
+          licenses: true,
         },
       });
       return user;

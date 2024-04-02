@@ -24,7 +24,7 @@ import { LocalStrategy } from './local.strategy';
         console.log(privateKey, publicKey);
 
         return {
-          signOptions: { expiresIn: '60m', algorithm: 'RS256' },
+          signOptions: { expiresIn: '365d', algorithm: 'RS256' },
           privateKey: Buffer.from(privateKey, 'base64').toString(),
           publicKey: Buffer.from(publicKey, 'base64').toString(),
         };

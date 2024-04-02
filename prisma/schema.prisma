@@ -14,7 +14,11 @@ model User {
   name      String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  devicesQtd Int     @default(1)
   licenses  License[]
+  authKey   AuthKey[]
+
+  devices   device[]  
 }
 
 model License {
@@ -27,6 +31,32 @@ model License {
   valid         Boolean  @default(true)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+
+  User      User     @relation(fields: [userId], references: [id])
+}
+
+model AuthKey {
+  id        String   @id @default(uuid())
+  userId    String
+  token       String
+  privateKey String
+  publicKey  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  User      User     @relation(fields: [userId], references: [id])
+}
+
+model device {
+  id        String   @id @default(uuid())
+  userId    String
+  name      String
+  hostname  String
+  os        String
+  version   String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   User      User     @relation(fields: [userId], references: [id])
 }
