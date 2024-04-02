@@ -1,0 +1,13 @@
+@BASE_URL = http://localhost:3333
+
+
+# @name create-account
+POST {{BASE_URL}}/users
+Content-Type: application/json
+
+{
+  "name": "Adriano",
+  "email": "adrianos@wbdigitalsolutions.com",
+  "password": "123456ad"
+}
+
