@@ -7,8 +7,15 @@ Content-Type: application/json
 
 {
   "name": "Walter",
-  "email": "walter5@wbdigitalsolutions.com",
-  "password": "123456a@d"
+  "email": "walter9@teste.com",
+  "password": "ddddd11dad@",
+  "licenses": [
+    {
+      "amount": 1000,
+      "method": "Visa",
+      "valid": true
+    }
+  ]
 }
 
 ###
