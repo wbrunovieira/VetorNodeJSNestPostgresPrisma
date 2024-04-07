@@ -1,4 +1,3 @@
-import { describe, beforeEach, it, expect, vi } from 'vitest';
 import { UsersService } from './users.service';
 import { PrismaService } from '@/prisma.service';
 
