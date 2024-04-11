@@ -14,7 +14,7 @@ model User {
   name      String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  devicesQtd Int     @default(1)
+  devicesQtd Int     @default(0)
   licenses  License[]
   authKey   AuthKey[]
 
@@ -54,6 +54,7 @@ model device {
   hostname  String
   os        String
   version   String
+  macNumber String  @unique
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

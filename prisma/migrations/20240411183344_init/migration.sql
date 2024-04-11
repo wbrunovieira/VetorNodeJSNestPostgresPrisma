@@ -6,7 +6,7 @@ CREATE TABLE "User" (
     "name" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "devicesQtd" INTEGER NOT NULL DEFAULT 1,
+    "devicesQtd" INTEGER NOT NULL DEFAULT 0,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -47,6 +47,7 @@ CREATE TABLE "device" (
     "hostname" TEXT NOT NULL,
     "os" TEXT NOT NULL,
     "version" TEXT NOT NULL,
+    "macNumber" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -55,6 +56,9 @@ CREATE TABLE "device" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "device_macNumber_key" ON "device"("macNumber");
 
 -- AddForeignKey
 ALTER TABLE "License" ADD CONSTRAINT "License_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

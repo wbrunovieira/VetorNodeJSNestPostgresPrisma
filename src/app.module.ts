@@ -7,6 +7,8 @@ import { ValidationInterceptor } from './interceptors/validation.interceptor';
 import { AuthModule } from './auth/auth.module';
 
 import { ConfigModule } from '@nestjs/config';
+import { DevicesController } from './device/device.controller';
+import { DeviceService } from './device/device.service';
 
 @Module({
   imports: [
@@ -15,7 +17,12 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     }),
   ],
-  controllers: [UsersController],
-  providers: [PrismaService, UsersService, ValidationInterceptor],
+  controllers: [UsersController, DevicesController],
+  providers: [
+    PrismaService,
+    UsersService,
+    ValidationInterceptor,
+    DeviceService,
+  ],
 })
 export class AppModule {}

@@ -6,8 +6,8 @@ POST {{BASE_URL}}/users
 Content-Type: application/json
 
 {
-  "name": "Bruno2",
-  "email": "bruno2@bruno.com",
+  "name": "Bruno",
+  "email": "bruno@bruno.com",
   "password": "123456@a",
   "licenses": [
     {
@@ -16,6 +16,20 @@ Content-Type: application/json
       "valid": true
     }
   ]
+}
+
+###
+# @name create-device
+POST {{BASE_URL}}/devices
+Content-Type: application/json
+
+{
+  "name": "Device 1",
+  "userId": "0bc5216d-d2c9-406a-92f4-c12fd1f62fa5",
+  "hostname": "hostname",
+  "macNumber": "macNumber",
+  "os": "os",
+  "version": "version"
 }
 
 ###
@@ -39,6 +53,6 @@ POST {{BASE_URL}}/auth
 Content-Type: application/json
 
 {
-  "email": "walter5@wbdigitalsolutions.com",
-  "password": "123456a@d"
+  "email": "bruno@bruno.com",
+  "password": "123456@a"
 }  
