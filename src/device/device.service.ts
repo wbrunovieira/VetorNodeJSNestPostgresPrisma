@@ -56,4 +56,15 @@ export class DeviceService {
   async getDevices() {
     return this.prisma.device.findMany();
   }
+
+  async findDeviceByMacAndUserId(macNumber: string, userId: string) {
+    const device = await this.prisma.device.findFirst({
+      where: {
+        macNumber: macNumber,
+        userId: userId,
+      },
+    });
+
+    return device;
+  }
 }

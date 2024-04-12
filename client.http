@@ -24,13 +24,30 @@ POST {{BASE_URL}}/devices
 Content-Type: application/json
 
 {
-  "name": "Device 1",
+  "name": "Device 4",
   "userId": "0bc5216d-d2c9-406a-92f4-c12fd1f62fa5",
-  "hostname": "hostname",
-  "macNumber": "macNumber",
+  "hostname": "hostname4",
+  "macNumber": "macNumber4",
   "os": "os",
-  "version": "version"
+  "version": "version5"
 }
+
+###
+
+# @name list-devices
+GET {{BASE_URL}}/devices
+
+###
+
+# @name get-device-by-macNumber
+POST  {{BASE_URL}}/devices/check-mac
+Content-Type: application/json
+
+{
+  "macNumber":"10:DD:B1:E3:FA:51",
+  "userId":"0bc5216d-d2c9-406a-92f4-c12fd1f62fa5"
+}
+
 
 ###
 

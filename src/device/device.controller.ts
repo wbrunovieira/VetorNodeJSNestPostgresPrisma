@@ -19,4 +19,15 @@ export class DevicesController {
   async getDevices() {
     return this.deviceService.getDevices();
   }
+
+  @Post('check-mac')
+  async checkDeviceByMac(
+    @Body() body: { macNumber: string; userId: string },
+  ): Promise<boolean> {
+    const device = await this.deviceService.findDeviceByMacAndUserId(
+      body.macNumber,
+      body.userId,
+    );
+    return !!device;
+  }
 }
