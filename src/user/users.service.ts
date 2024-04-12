@@ -64,4 +64,17 @@ export class UsersService {
       },
     });
   }
+
+  async getUserDevicesCount(userId: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { devicesQtd: true },
+    });
+
+    if (!user) {
+      throw new Error('Usuário não encontrado');
+    }
+
+    return user.devicesQtd;
+  }
 }

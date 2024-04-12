@@ -6,8 +6,8 @@ POST {{BASE_URL}}/users
 Content-Type: application/json
 
 {
-  "name": "Bruno2",
-  "email": "bruno2@bruno.com",
+  "name": "Bruno3",
+  "email": "bruno3@bruno.com",
   "password": "123456@a",
   "licenses": [
     {
@@ -24,13 +24,18 @@ POST {{BASE_URL}}/devices
 Content-Type: application/json
 
 {
-  "name": "Device 4",
+  "name": "Device 5",
   "userId": "0bc5216d-d2c9-406a-92f4-c12fd1f62fa5",
-  "hostname": "hostname4",
-  "macNumber": "macNumber4",
+  "hostname": "hostname5",
+  "macNumber": "macNumber5",
   "os": "os",
   "version": "version5"
 }
+
+###
+
+# @name number-of-devices
+GET {{BASE_URL}}/users/0bc5216d-d2c9-406a-92f4-c12fd1f62fa5/devices-count
 
 ###
 

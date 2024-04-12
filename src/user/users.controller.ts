@@ -1,5 +1,5 @@
 // src/users/users.controller.ts
-import { Body, Controller, Get, Post, UsePipes } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UsePipes } from '@nestjs/common';
 import { UsersService } from './users.service';
 
 import { createUserSchema } from './user.schema';
@@ -23,5 +23,11 @@ export class UsersController {
   @Get('valid-licenses')
   async getlallUsers() {
     return this.usersService.getAllUsersValidLicenses();
+  }
+
+  @Get(':userId/devices-count')
+  async getUserDevicesCount(@Param('userId') userId: string) {
+    const devicesCount = await this.usersService.getUserDevicesCount(userId);
+    return { devicesCount };
   }
 }
