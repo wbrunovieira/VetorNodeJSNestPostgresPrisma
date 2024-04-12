@@ -16,11 +16,11 @@ export class DeviceService {
     version: string;
   }) {
     try {
-      const userExists = await this.prisma.user.findUnique({
+      const user = await this.prisma.user.findUnique({
         where: { id: data.userId },
       });
 
-      if (!userExists) {
+      if (!user) {
         throw new Error('Usuário não encontrado');
       }
       console.log('macnumber : ', data.macNumber);
@@ -43,6 +43,12 @@ export class DeviceService {
           userId: data.userId,
         },
       });
+
+      await this.prisma.user.update({
+        where: { id: data.userId },
+        data: { devicesQtd: user.devicesQtd + 1 },
+      });
+
       return device;
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
@@ -66,5 +72,13 @@ export class DeviceService {
     });
 
     return device;
+  }
+
+  async getUserDevices(userId: string) {
+    return this.prisma.device.findMany({
+      where: {
+        userId: userId,
+      },
+    });
   }
 }

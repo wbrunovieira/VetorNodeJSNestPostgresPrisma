@@ -6,8 +6,8 @@ POST {{BASE_URL}}/users
 Content-Type: application/json
 
 {
-  "name": "Bruno",
-  "email": "bruno@bruno.com",
+  "name": "Bruno2",
+  "email": "bruno2@bruno.com",
   "password": "123456@a",
   "licenses": [
     {
@@ -48,6 +48,11 @@ Content-Type: application/json
   "userId":"0bc5216d-d2c9-406a-92f4-c12fd1f62fa5"
 }
 
+
+###
+
+# @name get-devices-by-id
+GET {{BASE_URL}}/devices/user/0bc5216d-d2c9-406a-92f4-c12fd1f62fa5
 
 ###
 

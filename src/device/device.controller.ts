@@ -1,5 +1,5 @@
 // src/users/users.controller.ts
-import { Body, Controller, Get, Post, UsePipes } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UsePipes } from '@nestjs/common';
 
 import { createDeviceSchema } from './device.schema';
 import { ZodValidationPipe } from 'src/pipes/validation.pipe';
@@ -29,5 +29,10 @@ export class DevicesController {
       body.userId,
     );
     return !!device;
+  }
+
+  @Get('user/:userId')
+  async getUserDevices(@Param('userId') userId: string) {
+    return this.deviceService.getUserDevices(userId);
   }
 }
