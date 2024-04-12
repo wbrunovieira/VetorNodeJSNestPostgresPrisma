@@ -83,9 +83,29 @@ export class DeviceService {
   }
 
   async deleteDevice(deviceId: string) {
-    const device = await this.prisma.device.delete({
-      where: { id: deviceId },
+    return await this.prisma.$transaction(async (prisma) => {
+      // Primeiro, busca o dispositivo para obter o userId antes de deletá-lo
+      const device = await prisma.device.findUnique({
+        where: { id: deviceId },
+        select: { userId: true }, // Seleciona apenas o userId
+      });
+
+      if (!device) {
+        throw new Error('Dispositivo não encontrado');
+      }
+
+      // Deleta o dispositivo
+      await prisma.device.delete({
+        where: { id: deviceId },
+      });
+
+      // Decrementa a quantidade de dispositivos do usuário
+      const user = await prisma.user.update({
+        where: { id: device.userId },
+        data: { devicesQtd: { decrement: 1 } }, // Reduz em 1 a contagem de dispositivos
+      });
+
+      return { message: 'Dispositivo deletado com sucesso.', user };
     });
-    return device;
   }
 }

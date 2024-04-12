@@ -24,18 +24,18 @@ POST {{BASE_URL}}/devices
 Content-Type: application/json
 
 {
-  "name": "Device 5",
-  "userId": "0bc5216d-d2c9-406a-92f4-c12fd1f62fa5",
-  "hostname": "hostname5",
-  "macNumber": "macNumber5",
+  "name": "Device 4",
+  "userId": "146ec9b3-e196-4ffa-9280-cbcae829a7bb",
+  "hostname": "hostname4",
+  "macNumber": "macNumber4",
   "os": "os",
-  "version": "version5"
+  "version": "version"
 }
 
 ###
 
 # @name number-of-devices
-GET {{BASE_URL}}/users/0bc5216d-d2c9-406a-92f4-c12fd1f62fa5/devices-count
+GET {{BASE_URL}}/users/146ec9b3-e196-4ffa-9280-cbcae829a7bb/devices-count
 
 ###
 
@@ -56,13 +56,13 @@ Content-Type: application/json
 
 ###
 # @name delete-device
-DELETE {{BASE_URL}}/devices/7b49494a-bff6-4251-9d13-53292f4f6b2a
+DELETE {{BASE_URL}}/devices/5e1cfcdf-36bb-41fc-ac46-0f125c18f0bb
 
 
 ###
 
 # @name get-devices-by-id
-GET {{BASE_URL}}/devices/user/0bc5216d-d2c9-406a-92f4-c12fd1f62fa5
+GET {{BASE_URL}}/devices/user/146ec9b3-e196-4ffa-9280-cbcae829a7bb
 
 ###
 
