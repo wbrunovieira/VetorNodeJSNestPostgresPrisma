@@ -1,5 +1,15 @@
 // src/users/users.controller.ts
-import { Body, Controller, Get, Param, Post, UsePipes } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Post,
+  UsePipes,
+} from '@nestjs/common';
 
 import { createDeviceSchema } from './device.schema';
 import { ZodValidationPipe } from 'src/pipes/validation.pipe';
@@ -34,5 +44,17 @@ export class DevicesController {
   @Get('user/:userId')
   async getUserDevices(@Param('userId') userId: string) {
     return this.deviceService.getUserDevices(userId);
+  }
+  @Delete(':deviceId')
+  async deleteDevice(@Param('deviceId') deviceId: string) {
+    try {
+      const device = await this.deviceService.deleteDevice(deviceId);
+      return { message: 'Dispositivo deletado com sucesso.', device };
+    } catch (error) {
+      throw new HttpException(
+        'Dispositivo não encontrado ou erro ao deletar.',
+        HttpStatus.NOT_FOUND,
+      );
+    }
   }
 }

@@ -55,6 +55,11 @@ Content-Type: application/json
 
 
 ###
+# @name delete-device
+DELETE {{BASE_URL}}/devices/7b49494a-bff6-4251-9d13-53292f4f6b2a
+
+
+###
 
 # @name get-devices-by-id
 GET {{BASE_URL}}/devices/user/0bc5216d-d2c9-406a-92f4-c12fd1f62fa5

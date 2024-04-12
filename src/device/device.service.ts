@@ -81,4 +81,11 @@ export class DeviceService {
       },
     });
   }
+
+  async deleteDevice(deviceId: string) {
+    const device = await this.prisma.device.delete({
+      where: { id: deviceId },
+    });
+    return device;
+  }
 }
