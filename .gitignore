@@ -3,6 +3,10 @@
 /node_modules
 /build
 
+commands.node_modules
+*.pem
+*.txt
+
 # Logs
 logs
 *.log
